@@ -115,6 +115,7 @@ USER bun
 # (Other original Lumiverse installation lines above...)
 
 # Install Litestream binary
+USER root
 ADD https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestream-v0.3.13-linux-amd64.tar.gz /tmp/litestream.tar.gz
 RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
 
