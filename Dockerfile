@@ -119,7 +119,7 @@ ADD https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestre
 RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
 
 # Make sure entrypoint script is executable
-COPY docker/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint to run your litestream setup
