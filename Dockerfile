@@ -112,5 +112,17 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
 # Run as non-root
 USER bun
 
-# Direct entry point — no interactive runner, logs go to stdout/stderr
-CMD ["bun", "run", "src/index.ts"]
+# (Other original Lumiverse installation lines above...)
+
+# Install Litestream binary
+ADD https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestream-v0.3.13-linux-amd64.tar.gz /tmp/litestream.tar.gz
+RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
+
+# Make sure entrypoint script is executable
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint to run your litestream setup
+ENTRYPOINT ["/entrypoint.sh"]
+
+
